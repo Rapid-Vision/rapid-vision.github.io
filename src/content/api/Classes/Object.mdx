@@ -1,0 +1,245 @@
+# Object
+
+**Inherits from**: _Serializable
+
+
+
+## Methods
+### `set_location`
+**Description**:
+
+Set the location of the object in 3D space.
+
+**Signature**:
+
+```python
+def set_location(self, location: Union[mathutils.Vector, typing.Sequence[float]])
+```
+
+**Arguments**:
+
+- **`location`** : `Union[mathutils.Vector, typing.Sequence[float]]{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `set_rotation`
+**Description**:
+
+Set the rotation of the object.
+
+**Signature**:
+
+```python
+def set_rotation(self, rotation: Union[mathutils.Euler, mathutils.Quaternion])
+```
+
+**Arguments**:
+
+- **`rotation`** : `Union[mathutils.Euler, mathutils.Quaternion]{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `set_scale`
+**Description**:
+
+Set the scale of the object.
+
+If `scale` is a single float, all axes are set to that value.
+If `scale` is a sequence or Vector of length 3, each axis is set individually.
+
+**Signature**:
+
+```python
+def set_scale(self, scale: Union[mathutils.Vector, typing.Sequence[float], float])
+```
+
+**Arguments**:
+
+- **`scale`** : `Union[mathutils.Vector, typing.Sequence[float], float]{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `set_property`
+**Description**:
+
+Set a property of the object. Properties can be used inside object's material nodes.
+
+**Signature**:
+
+```python
+def set_property(self, key: str, value: any)
+```
+
+**Arguments**:
+
+- **`key`** : `str{:python}`
+- **`value`** : `any{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `set_tags`
+**Description**:
+
+Set object's tags.
+
+Tags are used to represent object class for training a computer vision model. Object can have more then one tag.
+
+**Signature**:
+
+```python
+def set_tags(self, *tags: str | list[str])
+```
+
+**Arguments**:
+
+- **`*tags`** : `str | list[str]{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `add_tags`
+**Description**:
+
+Add tags to the object.
+
+Tags are used to represent object class for training a computer vision model. Object can have more then one tag.
+
+**Signature**:
+
+```python
+def add_tags(self, *tags: str | list[str])
+```
+
+**Arguments**:
+
+- **`*tags`** : `str | list[str]{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `point_at`
+**Description**:
+
+Orients the current object to point at another object, with an optional rotation around the direction vector.
+
+**Signature**:
+
+```python
+def point_at(self, rv_obj: 'Object', angle: float=0.0)
+```
+
+**Arguments**:
+
+- **`rv_obj`** : `'Object'{:python}` — Object to point at
+
+- **`angle`** : `float{:python}` — Angle to rotate around the direction vector in degrees
+
+
+**Returns**: `Self{:python}`
+
+---
+### `rotate_around_axis`
+**Description**:
+
+Rotate object around an axis.
+
+**Signature**:
+
+```python
+def rotate_around_axis(self, axis: mathutils.Vector, angle: float)
+```
+
+**Arguments**:
+
+- **`axis`** : `mathutils.Vector{:python}` — Axis of rotation
+
+- **`angle`** : `float{:python}` — Angle of rotation in degrees
+
+
+**Returns**: `Self{:python}`
+
+---
+### `set_shading`
+**Description**:
+
+Set shading to flat or smooth.
+
+**Signature**:
+
+```python
+def set_shading(self, shading: Literal['flat', 'smooth'])
+```
+
+**Arguments**:
+
+- **`shading`** : `Literal['flat', 'smooth']{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `show_debug_axes`
+**Description**:
+
+Show debug axes that can be seen in the `preview` mode.
+
+**Signature**:
+
+```python
+def show_debug_axes(self, show=True)
+```
+
+**Arguments**:
+
+- **`show`**
+
+**Returns**: `Self{:python}`
+
+---
+### `show_debug_name`
+**Description**:
+
+Show object's name that can be seen in the `preview` mode.
+
+**Signature**:
+
+```python
+def show_debug_name(self, show)
+```
+
+**Arguments**:
+
+- **`show`**
+
+**Returns**: `Self{:python}`
+
+---
+## Attributes
+### `obj`
+Type: `bpy.types.Object{:python}`
+
+
+---
+### `scene`
+Type: `Scene{:python}`
+
+
+---
+### `tags`
+Type: `set[str]{:python}`
+
+
+---
+### `properties`
+Type: `dict{:python}`
+
+
+---
+### `index`
+Type: `int{:python}`
+
+
+---
