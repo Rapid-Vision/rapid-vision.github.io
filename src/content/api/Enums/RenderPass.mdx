@@ -1,0 +1,57 @@
+# RenderPass
+
+Enum representing the supported render passes available for export. To enable them, use `Scene.set_passes` method.
+
+For full documentation view [blender docs](https://docs.blender.org/manual/en/latest/render/layers/passes.html)
+
+
+
+## Variants
+
+### `Z`
+Distance to the nearest visible surface.
+### `VECTOR`
+Motion vector
+### `MIST`
+Distance to the nearest visible surface, mapped to the 0.0 - 1.0 range.
+### `POSITION`
+Positions in world space.
+### `NORMAL`
+Surface normals in world space.
+### `UV`
+The UV coordinates within each object’s active UV map, represented through the red and green channels of the image.
+### `OBJECT_INDEX`
+A map where each pixel stores the user-defined ID of the object at that pixel. It is saved as 16-bit BW image.
+### `MATERIAL_INDEX`
+A map where each pixel stores the user-defined ID of the material at that pixel. It is saved as 16-bit BW image.
+### `SHADOW`
+Shadow map
+### `AO`
+Ambient Occlusion contribution from indirect lighting.
+### `EMISSION`
+Emission from materials, without influence from lighting.
+### `ENVIRONMENT`
+Captures the background/environment lighting.
+### `SHADOW_CATCHER`
+Captures shadows cast on shadow catcher objects.
+### `DIFFUSE_COLOR`
+Base diffuse color of surfaces.
+### `DIFFUSE_DIRECT`
+Direct light contribution to diffuse surfaces.
+### `DIFFUSE_INDIRECT`
+Indirect light contribution to diffuse surfaces.
+### `GLOSSY_COLOR`
+Base glossy (specular) color of surfaces.
+### `GLOSSY_DIRECT`
+Direct light contribution to glossy reflections.
+### `GLOSSY_INDIRECT`
+Indirect light contribution to glossy reflections.
+### `TRANSMISSION_COLOR`
+Base transmission color of materials.
+### `TRANSMISSION_DIRECT`
+Direct light through transmissive materials.
+### `TRANSMISSION_INDIRECT`
+Indirect light through transmissive materials.
+### `CRYPTO_OBJECT`
+### `CRYPTO_MATERIAL`
+### `CRYPTO_ASSET`

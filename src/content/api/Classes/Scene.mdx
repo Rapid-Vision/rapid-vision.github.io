@@ -1,0 +1,353 @@
+# Scene
+
+**Inherits from**: ABC, _Serializable
+
+Base class for describing rv scene. To set up a scene, implement `generate` function.
+
+
+
+## Methods
+### `generate`
+**Description**:
+
+Method to describe scene generation. To use framework you must implement it in a derrived class.
+
+**Signature**:
+
+```python
+@abstractmethod
+def generate(self) -> None
+```
+
+**Arguments**:
+
+
+**Returns**: `None{:python}`
+
+---
+### `set_resolution`
+**Description**:
+
+Set resulting image resolution. If only width is passed, resulting image will be a square.
+
+**Signature**:
+
+```python
+def set_resolution(self, width: float, height: float=None)
+```
+
+**Arguments**:
+
+- **`width`** : `float{:python}`
+- **`height`** : `float{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `set_rendering_time_limit`
+**Description**:
+
+Set the maximum allowed rendering time for a single image. Higher value leads to better quality.
+
+**Signature**:
+
+```python
+def set_rendering_time_limit(self, time_limit: float=3.0)
+```
+
+**Arguments**:
+
+- **`time_limit`** : `float{:python}` — Rendering time limit in seconds
+
+
+**Returns**: `Self{:python}`
+
+---
+### `set_passes`
+**Description**:
+
+Set a list of render passes that will be saved when rendering.
+
+**Signature**:
+
+```python
+def set_passes(self, *passes: tuple[RenderPass | list[RenderPass], ...])
+```
+
+**Arguments**:
+
+- **`*passes`** : `tuple[RenderPass | list[RenderPass], ...]{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `create_empty`
+**Description**:
+
+Create an empty object. May be useful to point camera at or for debugging during `preview` stage.
+
+**Signature**:
+
+```python
+def create_empty(self, name: str='Empty') -> 'Object'
+```
+
+**Arguments**:
+
+- **`name`** : `str{:python}`
+
+**Returns**: `'Object'{:python}`
+
+---
+### `create_sphere`
+**Description**:
+
+Create a sphere primitive.
+
+**Signature**:
+
+```python
+def create_sphere(self, name: str='Sphere', radius: float=1.0, segments: int=32, ring_count: int=16) -> 'Object'
+```
+
+**Arguments**:
+
+- **`name`** : `str{:python}`
+- **`radius`** : `float{:python}`
+- **`segments`** : `int{:python}`
+- **`ring_count`** : `int{:python}`
+
+**Returns**: `'Object'{:python}`
+
+---
+### `create_cube`
+**Description**:
+
+Create a cube primitive.
+
+**Signature**:
+
+```python
+def create_cube(self, name: str='Cube', size: float=2.0) -> 'Object'
+```
+
+**Arguments**:
+
+- **`name`** : `str{:python}`
+- **`size`** : `float{:python}`
+
+**Returns**: `'Object'{:python}`
+
+---
+### `create_plane`
+**Description**:
+
+Create a plane primitive.
+
+**Signature**:
+
+```python
+def create_plane(self, name: str='Plane', size: float=2.0) -> 'Object'
+```
+
+**Arguments**:
+
+- **`name`** : `str{:python}`
+- **`size`** : `float{:python}`
+
+**Returns**: `'Object'{:python}`
+
+---
+### `get_camera`
+**Description**:
+
+Get the `Camera` object used for rendering.
+
+**Signature**:
+
+```python
+def get_camera(self) -> 'Camera'
+```
+
+**Arguments**:
+
+
+**Returns**: `'Camera'{:python}`
+
+---
+### `set_world`
+**Description**:
+
+Set a new `World` representing environmental lighting.
+
+**Signature**:
+
+```python
+def set_world(self, world: 'World') -> 'World'
+```
+
+**Arguments**:
+
+- **`world`** : `'World'{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+### `get_world`
+**Description**:
+
+Get current used `World`.
+
+**Signature**:
+
+```python
+def get_world(self) -> 'World'
+```
+
+**Arguments**:
+
+
+**Returns**: `'World'{:python}`
+
+---
+### `set_tags`
+**Description**:
+
+Set scene's global tags.
+
+Tags are used to represent image class for training a computer vision model for a classification task.
+
+**Signature**:
+
+```python
+def set_tags(self, *tags) -> 'Scene'
+```
+
+**Arguments**:
+
+- **`*tags`**
+
+**Returns**: `Self{:python}`
+
+---
+### `add_tags`
+**Description**:
+
+Add tags to the scene.
+
+Tags are used to represent image class for training a computer vision model for a classification task.
+
+**Signature**:
+
+```python
+def add_tags(self, *tags) -> 'Scene'
+```
+
+**Arguments**:
+
+- **`*tags`**
+
+**Returns**: `Self{:python}`
+
+---
+### `load_object`
+**Description**:
+
+Get a loader object to import from a blender file.
+
+If `import_name` is specified, it imports an object with specified name.
+If no `import_name` is specified, it imports the first object.
+
+Loader object is used to create instances of an object.
+
+**Signature**:
+
+```python
+def load_object(self, blendfile: str, import_name: str=None) -> 'ObjectLoader'
+```
+
+**Arguments**:
+
+- **`blendfile`** : `str{:python}`
+- **`import_name`** : `str{:python}`
+
+**Returns**: `'ObjectLoader'{:python}`
+
+---
+### `load_objects`
+**Description**:
+
+Get a list of loader objects to import from a blender file.
+
+If `import_names` is specified, it imports only specified objects.
+If no `import_names` is specified, it imports all specfied objects.
+
+Loader object is used to create instances of an object.
+
+**Signature**:
+
+```python
+def load_objects(self, blendfile: str, import_names: list[str]=None) -> list['ObjectLoader']
+```
+
+**Arguments**:
+
+- **`blendfile`** : `str{:python}`
+- **`import_names`** : `list[str]{:python}`
+
+**Returns**: `Self{:python}`
+
+---
+## Attributes
+### `resolution`
+Type: `tuple[int, int]{:python}`
+
+
+---
+### `time_limit`
+Type: `float{:python}`
+
+
+---
+### `passes`
+Type: `set[RenderPass]{:python}`
+
+
+---
+### `output_dir`
+Type: `Optional[str]{:python}`
+
+Directory for storing all outputs generated by a single `rv render` run
+
+---
+### `subdir`
+Type: `str{:python}`
+
+Directory to store results of a single rendering
+
+---
+### `camera`
+Type: `'Camera'{:python}`
+
+
+---
+### `world`
+Type: `'World'{:python}`
+
+
+---
+### `tags`
+Type: `set[str]{:python}`
+
+
+---
+### `objects`
+Type: `set['Object']{:python}`
+
+
+---
+### `object_index_counter`
+Type: `int{:python}`
+
+
+---

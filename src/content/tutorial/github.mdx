@@ -1,0 +1,37 @@
+import { Steps } from "nextra/components";
+
+# Building from github
+
+<Steps>
+## Install dependencies
+Install [Go](https://go.dev/doc/install) and [Blender](https://www.blender.org/download/).
+
+## Clone repository
+
+```bash copy
+git clone https://github.com/Rapid-Vision/rv.git
+```
+
+## Install libraries
+
+```bash copy
+go mod tidy
+```
+
+## Build the project
+
+```bash copy
+go build
+```
+
+## Try it out
+Interactively preview the scene.
+```bash copy
+./rv preview examples/1_primitives/scene.py
+```
+Render final dataset:
+```bash copy
+./rv render examples/1_primitives/scene.py -n 100
+```
+
+</Steps>
